@@ -1,1 +1,1 @@
-print("Sistema RH Iniciado pelo Gabriel")
+print("Sistema RH Iniciado!")
