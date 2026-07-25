@@ -26,3 +26,13 @@ print("Nome:", colaborador["nome"])
 print("Cargo:", colaborador["cargo"])
 print("Setor:", colaborador["setor"])
 print("Salário:", colaborador["salario"])
+
+with open("colaboradores.json","r") as arquivo:
+    colaboradores = json.load(arquivo)
+
+colaboradores.append(colaborador)
+
+with open("colaboradores.json","r") as arquivo:
+    json.dump(colaboradores, arquivo, indent=4)
+
+    print("\nColaborador salvo com sucesso!")
