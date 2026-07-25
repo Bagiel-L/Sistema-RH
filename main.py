@@ -32,7 +32,7 @@ with open("colaboradores.json","r") as arquivo:
 
 colaboradores.append(colaborador)
 
-with open("colaboradores.json","r") as arquivo:
+with open("colaboradores.json","w") as arquivo:
     json.dump(colaboradores, arquivo, indent=4)
 
     print("\nColaborador salvo com sucesso!")
