@@ -9,5 +9,5 @@ print("Cargo Adicionado", cargo)
 setor = input("Qual o setor?")
 print("Setor adicionado", setor)
 
-salario = float(input("Digite o Salário"))
+salario = float(input("Digite o salário: ").replace(",", "."))
 print("Salário cadastrado:",salario)
