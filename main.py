@@ -2,37 +2,48 @@ import json
 
 print("=== Sistema de RH ===")
 
-nome = input("Digite o nome do colaborador:")
-print("Colaborador Cadastrado",nome)
+def cadastrar_colaborador():
+    
+    print("\n=== Cadastro de Colaborador ===")
 
-cargo = input("Digito o cargo do Colaborador:")
-print("Cargo Adicionado", cargo)
+    nome = input("Digite o nome do colaborador:")
+    print("Colaborador Cadastrado",nome)
 
-setor = input("Qual o setor?")
-print("Setor adicionado", setor)
+    cargo = input("Digito o cargo do Colaborador:")
+    print("Cargo Adicionado", cargo)
 
-salario = float(input("Digite o salário: ").replace(",", "."))
-print("Salário cadastrado:",salario)
+    setor = input("Qual o setor?")
+    print("Setor adicionado", setor)
 
-colaborador = {
-    "nome": nome,
-    "cargo": cargo,
-    "setor": setor,
-    "salario": salario
-}
+    salario = float(input("Digite o salário: ").replace(",", "."))
+    print("Salário cadastrado:",salario)
 
-print("\n=== Colaborador Cadastrado ===")
-print("Nome:", colaborador["nome"])
-print("Cargo:", colaborador["cargo"])
-print("Setor:", colaborador["setor"])
-print("Salário:", colaborador["salario"])
+    colaborador = {
+        "nome": nome,
+        "cargo": cargo,
+        "setor": setor,
+        "salario": salario
+    }
 
-with open("colaboradores.json","r") as arquivo:
-    colaboradores = json.load(arquivo)
+    print("\n=== Colaborador Cadastrado ===")
+    print("Nome:", colaborador["nome"])
+    print("Cargo:", colaborador["cargo"])
+    print("Setor:", colaborador["setor"])
+    print("Salário:", colaborador["salario"])
 
-colaboradores.append(colaborador)
 
-with open("colaboradores.json","w") as arquivo:
-    json.dump(colaboradores, arquivo, indent=4)
+    try:
+        with open("colaboradores.json","r") as arquivo:
+            colaboradores = json.load(arquivo)
+
+    except FileNotFoundError:
+        colaboradores = []
+
+    colaboradores.append(colaborador)
+
+    with open("colaboradores.json","w") as arquivo:
+        json.dump(colaboradores, arquivo, indent=4)
 
     print("\nColaborador salvo com sucesso!")
+
+cadastrar_colaborador()
