@@ -1,19 +1,18 @@
 import json
 
-print("=== Sistema de RH ===")
+def cadastrar_colaborador(): #Cadastro de Funcionários
 
-def cadastrar_colaborador():
     
     print("\n=== Cadastro de Colaborador ===")
 
     nome = input("Digite o nome do colaborador:")
-    print("Colaborador Cadastrado",nome)
+    print("Colaborador Cadastrado:",nome)
 
     cargo = input("Digito o cargo do Colaborador:")
-    print("Cargo Adicionado", cargo)
+    print("Cargo Adicionado:", cargo)
 
     setor = input("Qual o setor?")
-    print("Setor adicionado", setor)
+    print("Setor adicionado:", setor)
 
     salario = float(input("Digite o salário: ").replace(",", "."))
     print("Salário cadastrado:",salario)
@@ -46,4 +45,39 @@ def cadastrar_colaborador():
 
     print("\nColaborador salvo com sucesso!")
 
-cadastrar_colaborador()
+def listar_colaboradores(): #Listar Colaboradores
+    with open("colaboradores.json", "r") as arquivo:
+        colaboradores = json.load(arquivo)
+
+        if not colaboradores:
+            print("Lista Vazia")
+        
+        else:
+            for colaborador in colaboradores:
+                print("Nome:", colaborador["nome"])
+                print("Cargo:", colaborador["cargo"])
+                print("Setor:", colaborador["setor"])
+                print("Salário:", colaborador["salario"])
+                print("----------------")
+
+    input("\nPressione ENTER para voltar ao menu...")
+
+while True:
+
+    print("=== Sistema de RH ===")
+    print("1 - Cadastrar Funcionário")
+    print("2 - Listar Funcionários")
+    print( "3 - Sair")
+        
+    opcao = input("Escolha uma opção.")
+    if opcao == "1":
+            print("Você escolheu cadastrar")
+            cadastrar_colaborador()
+        
+    elif opcao == "2":
+            print("Listando Funcionários")
+            listar_colaboradores()
+
+    elif opcao == "3":
+            print("Sistema fechado")
+            break
