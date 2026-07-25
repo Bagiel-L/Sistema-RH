@@ -1,0 +1,1 @@
+print("Sistema RH Iniciado!")
